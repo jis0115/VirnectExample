@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">VirnectExample</string>
+    <string name="search_hint">검색어를 입력하시오</string>
 </resources>
