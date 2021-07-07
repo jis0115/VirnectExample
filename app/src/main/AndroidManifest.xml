@@ -10,12 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VirnectExample"
         android:name=".presentation.VirnectExampleApplication">
-        <activity android:name=".presentation.ui.main.view.MainActivity">
+        <activity android:name=".presentation.ui.main.view.MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.ui.detail.view.DetailActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

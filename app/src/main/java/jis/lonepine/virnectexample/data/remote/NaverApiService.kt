@@ -7,5 +7,7 @@ import retrofit2.http.Query
 
 interface NaverApiService {
     @GET("/v1/search/shop.json")
-    fun search(@Query("query") searchText:String): Single<SearchResult>
+    fun search(@Query("query") searchText:String,
+               @Query("display") display:Int = 100,
+               @Query("start") start:Int = 1): Single<SearchResult>
 }
