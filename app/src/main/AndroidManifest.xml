@@ -10,13 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VirnectExample"
         android:name=".presentation.VirnectExampleApplication">
-        <activity android:name=".presentation.ui.main.view.MainActivity" android:screenOrientation="portrait">
+        <activity android:name=".presentation.ui.main.view.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.VirnectExample.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.ui.detail.view.DetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".presentation.ui.detail.view.DetailActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.ui.main.view.MainActivity"
+            android:theme="@style/Theme.VirnectExample.NoActionBar"
+            android:label="@string/detail">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".presentation.ui.main.view.MainActivity" />
+
+        </activity>
     </application>
 
 </manifest>

@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="item_title">16dp</dimen>
+
+    <dimen name="detail_item_title">30dp</dimen>
+    <dimen name="detail_price">24dp</dimen>
+    <dimen name="app_bar_height">300dp</dimen>
 </resources>

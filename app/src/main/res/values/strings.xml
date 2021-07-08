@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">VirnectExample</string>
+    <string name="detail">상세화면</string>
     <string name="search_hint">검색어를 입력하시오</string>
     <string name="price">%s원</string>
+    <string name="buy_item">구매하러가기</string>
 </resources>

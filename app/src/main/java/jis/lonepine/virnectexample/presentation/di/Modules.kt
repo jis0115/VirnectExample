@@ -4,6 +4,7 @@ import jis.lonepine.virnectexample.BuildConfig
 import jis.lonepine.virnectexample.data.remote.NaverApiService
 import jis.lonepine.virnectexample.domain.repository.SearchRepository
 import jis.lonepine.virnectexample.domain.usecase.SearchItemListUseCase
+import jis.lonepine.virnectexample.presentation.ui.detail.viewmodel.DetailViewModel
 import jis.lonepine.virnectexample.presentation.ui.main.viewmodel.MainViewModel
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -58,22 +59,15 @@ val networkModules = module {
 
 val useCaseModules = module {
     factory { SearchItemListUseCase(get()) }
-
 }
 
 val repositoryModule = module {
     factory { SearchRepository(get()) }
-//    factory { CommonRepository(get(qualifier = StringQualifier(Constant.BASE_API)),get(qualifier = StringQualifier(Constant.IMAGE_API)),get()) }
-//    factory { LottoStoreRepository(get(qualifier = StringQualifier(Constant.BASE_API)),get(),get(),get()) }
-//    factory { MessageRepository(get(qualifier = StringQualifier(Constant.BASE_API)),get()) }
-//    factory { MyLottoRepository(get(qualifier = StringQualifier(Constant.BASE_API)),get()) }
-//    factory { QrCodeRepository(get(qualifier = StringQualifier(Constant.BASE_API)),get()) }
 }
 
 val viewModels = module {
     viewModel { MainViewModel(get()) }
-//    viewModel { IntroViewModel(get(),get(),get(),get(),get(),get(),get(),get(),get(),get()) }
-
+    viewModel { DetailViewModel() }
 }
 
 val moduleList = listOf(networkModules, viewModels, repositoryModule, useCaseModules)
