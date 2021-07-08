@@ -27,6 +27,8 @@ class DetailActivity:BindingActivity<ActivityDetailBinding>(R.layout.activity_de
 
         binding.appBar.layoutParams.height = getScreenWidth()
 
-        Log.e("jis","item > $item")
+        /*
+         * 디테일 화면 구성할만한 내용이 딱히 없어보입니다.. 리스트에서 url 통해 상세화면을 웹뷰로 하는게 오히려 더 맞는것같은... api.. 인듯합니다.
+         */
     }
 }

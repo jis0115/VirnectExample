@@ -1,8 +1,11 @@
 package jis.lonepine.virnectexample.presentation.ui.main.view
 
 import android.content.Intent
+import android.util.Log
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import jis.lonepine.virnectexample.R
 import jis.lonepine.virnectexample.databinding.ActivityMainBinding
 import jis.lonepine.virnectexample.presentation.base.BindingActivity
@@ -21,6 +24,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
 
         binding.viewModel = mainViewModel.apply {
             observe(showDetail){
+                binding.searchView.clearFocus()
                 startActivity(Intent(this@MainActivity,DetailActivity::class.java).apply {
                     putExtra("item",it!!)
                 })
@@ -38,6 +42,14 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
             override fun onQueryTextChange(newText: String?): Boolean {
                 return false
             }
+        })
+
+        binding.recyclerView.addOnScrollListener(object:RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                mainViewModel.loadMore((recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition())
+            }
+
         })
 
     }
