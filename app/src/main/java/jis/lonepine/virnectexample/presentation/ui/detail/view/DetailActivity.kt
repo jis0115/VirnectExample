@@ -24,7 +24,6 @@ class DetailActivity:BindingActivity<ActivityDetailBinding>(R.layout.activity_de
         }
         val item = intent.getParcelableExtra<Item>("item")
         binding.item = item
-
         binding.appBar.layoutParams.height = getScreenWidth()
 
         /*

@@ -11,7 +11,6 @@ abstract class BindingActivity<B : ViewDataBinding>(private val layoutId : Int) 
     abstract fun initView()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        supportActionBar?.hide()
         binding = DataBindingUtil.inflate(layoutInflater,layoutId,null,false)
         setContentView(binding.root)
         binding.lifecycleOwner = this

@@ -43,7 +43,6 @@ class MainViewModel(
                         }
                     }
                     if (it.total == _searchList.value.size){
-                        Log.e("jis","end !!!!")
                         isEnd = true
                     }
                 },{

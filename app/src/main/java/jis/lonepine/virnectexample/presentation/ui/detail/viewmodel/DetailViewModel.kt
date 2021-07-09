@@ -6,8 +6,6 @@ import jis.lonepine.virnectexample.presentation.base.DisposableViewModel
 import jis.lonepine.virnectexample.presentation.base.SingleLiveEvent
 
 class DetailViewModel:DisposableViewModel() {
-
-
     private val _openWebBrowser = SingleLiveEvent<String>()
     val openWebBrowser:LiveData<String> = _openWebBrowser
     fun goNaverShopping(item: Item){
