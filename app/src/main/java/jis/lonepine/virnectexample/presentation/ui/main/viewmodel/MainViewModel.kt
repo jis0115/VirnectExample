@@ -1,5 +1,6 @@
 package jis.lonepine.virnectexample.presentation.ui.main.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -16,12 +17,14 @@ class MainViewModel(
     var display = 100
     var startIdx = 1
     var isLoading = false
+    var isEnd = false
 
     private val _searchList = NotNullMutableLiveData(listOf<Item>())
     val searchList:LiveData<List<Item>> = _searchList
     fun searchItem(text:String){
         searchText = text
         startIdx = 1
+        isEnd = false
         _searchList.value = listOf()
         callApi()
     }
@@ -38,9 +41,10 @@ class MainViewModel(
                             addAll(_searchList.value)
                             addAll(it.items)
                         }
-                    }else
-                    {
-                        _searchList.value = listOf()
+                    }
+                    if (it.total == _searchList.value.size){
+                        Log.e("jis","end !!!!")
+                        isEnd = true
                     }
                 },{
                     it.printStackTrace()
@@ -49,7 +53,13 @@ class MainViewModel(
     }
 
     fun loadMore(visiblePosition:Int){
-        if(visiblePosition == _searchList.value.size-1 && !isLoading){
+        fun loadNext(load:()->Unit){
+           if(visiblePosition == _searchList.value.size-1 && !isLoading && !isEnd){
+               load()
+           }
+        }
+
+        loadNext{
             isLoading = true
             startIdx+=display
             callApi()
